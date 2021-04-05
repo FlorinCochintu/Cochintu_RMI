@@ -1,0 +1,28 @@
+/**
+ * COCHINTU FLORIN
+ */
+
+package Cochintu_RMI;
+
+import java.rmi.RemoteException;
+
+import java.rmi.registry.Registry;
+import java.rmi.NotBoundException;
+
+public class CalculatorServer {
+    public static void main(String[] args)throws RemoteException, NotBoundException{
+        
+        try{
+            ///Se creeaza registru RMI accesibil pe portul 8282 
+            Registry r = java.rmi.registry.LocateRegistry.createRegistry(8282);
+            ///seinregistraza obiectul accesibil la distanta "Calculator", IN rmiregiatry
+            r.rebind("Calculator", new Calculator());
+            System.out.println("Obiectul 'Calculator' a fost inregistrat in rmiregistry si este accesibil la distanta! \n" + "Serverul Ruleaza: " + r);
+        }
+        //Tratarea exceptiei
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
+        
+}
