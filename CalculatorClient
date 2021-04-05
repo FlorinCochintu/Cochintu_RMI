@@ -1,0 +1,70 @@
+package Cochintu_RMI;
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.util.Scanner;
+
+/**
+ * COCHINTU FLORIN
+ */
+
+public class CalculatorClient {
+    public static void main(String[] args) throws NotBoundException, RemoteException, MalformedURLException{
+        Scanner sc = new Scanner(System.in);
+        while(true)
+            try {
+                ///Se cauta obiectul accesibil la distanta 'Calculator' in rmiregistry
+                CalculatorInterface c = (CalculatorInterface) Naming.lookup("//localhost:8282/Calculator");
+                System.out.println("Obiecturl 'Calculator' a fost regasit in rmiregistry!\n" + "Clientul s-a conectat la Server ....");
+                System.out.println("Selectati una din urmatoarele operatii din MENIU: ");
+                System.out.println("1. Adunare");
+                System.out.println("2. Scadere");
+                System.out.println("3. Inmultire");
+                System.out.println("4. Impartire");
+                System.out.println("5. modulo");
+                System.out.println("6. op1 (a+b)/2");
+                System.out.println("7. op2 (a*b)-(b/2)");
+                System.out.println("8. op3 (a*a)/(a+b)");
+                System.out.println("9. Toate Operatiile aritmetice: +, -, *, / ");
+                System.out.println("Introduceti indexul operatiei din Meniu: ");
+                int operatia = sc.nextInt();
+                int x, y;
+                System.out.println("Introduceti primul operand: ");
+                x = sc.nextInt();
+                System.out.println("Introduceti al doilea operand: ");
+                y =sc.nextInt();
+                
+                switch(operatia){
+                case 1:System.out.println("Rezultatu adunarii este: " +c.add(x,y));break;
+                case 2:System.out.println("Rezultatu scaderii este: " +c.sub(x,y));break;
+                case 3:System.out.println("Rezultatu inmultirii este: " +c.mul(x,y));break;
+                case 4:System.out.println("Rezultatu Impartirii este: " +c.div(x,y));break;
+                case 5:System.out.println("Rezultatu Modulo este: " +c.mod(x,y));break;
+                case 6:System.out.println("Rezultatu op1 (a+b)/2 este: " +c.op1(x,y));break;
+                case 7:System.out.println("Rezultatu op2 (a*b)-(b/2) este: " +c.op1(x,y));break;
+                case 8:System.out.println("Rezultatu op3 (a*a)/(a+b) este: " +c.op1(x,y));break;
+                
+                case 9:{
+                    System.out.println("Rezultatul adunarii este: " +c.add(x,y));
+                    System.out.println("Rezultatu scaderii este: " +c.sub(x,y));
+                    System.out.println("Rezultatu inmultirii este: " +c.mul(x,y));
+                    System.out.println("Rezultatu Impartirii este: " +c.div(x,y));
+                    System.out.println("Rezultatu Modulo este: " +c.mod(x,y));
+                    System.out.println("Rezultatu op1 este: " +c.op1(x,y));
+                    System.out.println("Rezultatu op2 este: " +c.op2(x,y));
+                    System.out.println("Rezultatu op3 este: " +c.op3(x,y));
+                    break;
+            }
+            }        
+            }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+
+    private static void Switch(int operatia) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}
