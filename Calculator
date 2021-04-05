@@ -1,0 +1,56 @@
+/**
+ * COCHINTU FLORIN
+ */
+
+package Cochintu_RMI;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+///Se declara obiectul accesibil la distanta cu cele 4 metode care pot fi invocate la distanta
+public class Calculator extends UnicastRemoteObject implements CalculatorInterface{
+    public Calculator() throws RemoteException{
+        int a,b;
+    }
+  
+    @Override
+    public int add(int a, int b){
+        return a+b;
+    }
+   
+    @Override
+    public int sub(int a, int b){
+        return a-b;
+    }
+    
+    @Override
+    public int mul(int a, int b){
+        return a*b;
+    }
+   
+    @Override
+    public int div(int a, int b){
+        return a/b;
+    }
+    
+    @Override
+    public int mod(int a, int b){
+        return a%b;
+    }
+     @Override
+    public int op1(int a, int b){
+        return (a+b)/2;
+    }
+    
+      @Override
+    public int op2(int a, int b){
+        return (a*b)-(b/2);
+    }
+    
+      @Override
+    public int op3(int a, int b){
+        return (a*a)/(a+b);
+    }
+    
+        
+}
